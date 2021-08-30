@@ -1,0 +1,11 @@
+trait,comment
+C127_A,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
+D188_A,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
+C127_A1B,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
+D160_A1B,"Remove problematic pheontypes. D160, D164, D171, are not annotated phenotypes and contain many NAs"
+D164_A1B,"Remove problematic pheontypes. D160, D164, D171, are not annotated phenotypes and contain many NAs"
+D171_A1B,"Remove problematic pheontypes. D160, D164, D171, are not annotated phenotypes and contain many NAs"
+D188_A1B,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
+C127_C,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
+D188_C,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
+D189_C,Remove problematic pheontypes. C127 and D188/9 measure distances that are usually on the order of 1 pixel
