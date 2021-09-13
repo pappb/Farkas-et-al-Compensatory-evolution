@@ -5,7 +5,7 @@ rm(list=ls())
 library(tidyverse)
 library(cowplot)
 
-source("script/script-08-preprocess_calmorph_output/my_parameters.R") # load the dir locations and parameters
+source("R-scripts/preprocess_calmorph_output/my_parameters.R") # load the dir locations and parameters
 
 out_data_dir0<-"data/preprocess_calmorph_output/"
 out_data_dir1<-"data/preprocess_calmorph_output/histogra_data_of_images/";

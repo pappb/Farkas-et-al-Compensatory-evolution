@@ -12,7 +12,7 @@ rm(list=ls())
 
 library(tidyverse)
 
-source("script/script-08-preprocess_calmorph_output/my_parameters.R") # load the dir locations and parameters
+source("R-scripts/preprocess_calmorph_output/my_parameters.R") # load the dir locations and parameters
 
 dir_data_out<-"data/preprocess_calmorph_output/data-collected_all_cell_level_data_from_calmorph_output/"
 dir.create(dir_data_out,recursive = TRUE);

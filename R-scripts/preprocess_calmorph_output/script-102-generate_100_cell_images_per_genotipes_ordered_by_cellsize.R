@@ -11,9 +11,9 @@ rm(list=ls())
 
 library(tidyverse)
 #source("script/script-03-tryGLMM/function-my_xlsx_save.R")
-source("script/script-08-preprocess_calmorph_output/function-find_a_cell_image-v2.R")
+source("R-scripts/preprocess_calmorph_output/function-find_a_cell_image-v2.R")
 
-source("script/script-08-preprocess_calmorph_output/my_parameters.R")
+source("R-scripts/preprocess_calmorph_output/my_parameters.R")
 
 screen_metadata_tbl<-read_csv("data/preprocess_calmorph_output/YMP_tables/YMP_screen_metadata.csv")
 

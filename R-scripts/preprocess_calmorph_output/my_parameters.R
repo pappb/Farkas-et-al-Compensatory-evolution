@@ -1,6 +1,4 @@
 
-#source("script/script-08-preprocess_calmorph_output/my_parameters.R") # load the dir locations and parameters
-
 
 params<-list()
 

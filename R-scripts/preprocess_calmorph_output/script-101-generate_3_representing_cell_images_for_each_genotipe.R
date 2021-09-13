@@ -9,7 +9,7 @@ rm(list=ls())
 
 library(tidyverse)
 #source("script/script-03-tryGLMM/function-my_xlsx_save.R")
-source("script/script-08-preprocess_calmorph_output/function-find_a_cell_image-v3.R")
+source("R-scripts/preprocess_calmorph_output/function-find_a_cell_image-v3.R")
 
 screen_metadata_tbl<-read_csv("data/preprocess_calmorph_output/YMP_tables/YMP_screen_metadata.csv")
 
