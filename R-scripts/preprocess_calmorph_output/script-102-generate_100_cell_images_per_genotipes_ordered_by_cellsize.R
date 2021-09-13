@@ -1,8 +1,6 @@
-# Minden genotipushoz csinalok egy konyvtarba 100 sejtrol egy-egy kepet
-# szamozva vannak a kepek, es a sorrend a sejtfazisokat igyekszik mutatni:
-# A, A1, B, C sejtfazisok jonnek egymas utan, es egy sejtfazison belul sejtmeret szerint jonnek sorba a sejtek.
-#
-# Az egyes sejtfazisokbol szarmazo kepek aranya aranyos a genotipusra jellemzovel
+# For each genotype I generate a collection of 100 cell images
+# The image file numbers are ordered by the cell  seize.
+# the 100 cell contains each A, A1, B and C  of DGroup cells. The number of images of a DGroup is proportional to the genotype carateristic.
 
 options( encoding="utf8")
 graphics.off()
@@ -29,13 +27,10 @@ big_tbl<-big_tbl %>%  filter(is_ok) %>%
   select(Dgroup2, everything())
 
 trait_names<-grep("^[CD]\\d\\d.*$",names(big_tbl), value = TRUE)
-# 
-# trait_description_tbl<-read_rds("data/preprocess_calmorph_output/trait_description_tbl.rds")
 
 out_dir1<-"out/2020_12_15-cell_order/"
 dir.create(out_dir1,recursive = TRUE)
 
-#tbl1<-big_tbl %>%  filter(plateID=="YMP_plate_07" & well=="G08")
 genotype_list<-unique(big_tbl$genotypeID)
 genotype_list<-setdiff(genotype_list,"SIGMA")
 for( i in seq(genotype_list))
@@ -64,29 +59,27 @@ for( i in seq(genotype_list))
     
     tbl1<-big_tbl %>%  filter(genotypeID==gt)
     
-    # sorba rakom a sejteket nagysag szerint , ugy hogy eloszor az A, aztán az A1, aztan B aztan a C allapotuak jonnek
-    # es allapotokon belul a lehgkisebb van elol, a legnagyobb utoljara
-    # A (C101 a sejtmeretet jelennti)
+    # I order tche cells by  Dgroup-fase and cell size. The smallest cell is the first.
+    # C101=cell size
     tbl1<-tbl1 %>% arrange(Dgroup, C101) 
-    # egyenletesen elosztva kiveszek 100 sejtet
+    
+    # I select the 100 images uniformly distributed
     idx<-round( seq(0,1,length.out = 100)*(nrow(tbl1)-1) +1)
     tbl1<-tbl1[idx,]
     
     
-    # a tbl1 minden sorához generalok egy png kepet arrol a sejtrol
-    
+    # for each row of tbl a png image will be generated
     for(ii in 1:nrow(tbl1))
     {
       
       
       r1<-tbl1[ii,]
       
-      # ez a fuggveny egy adatsorhoz kikeresi a kepeket es egy listaba szervezve visszaad 3 kep ojketumot
+      # this function looks for the images. It returns 3 image objects ( dapi chanel/ conA chanel / mixed) 
       res1<-get_calmorph_cell_images(cell_data_row = r1,
                                      screen_metadata_tbl = screen_metadata_tbl,
-                                     
-                                     dir_of_images=params$direcory_of_jpg_images_from_microscoope, #"/home/feketeg/eclipse-workspaces/ws3-forEclipseOxigen/MORPHOLOGY-2018/mater-BRANCH/Morphology-2018-Karcsi/link_to_raid_microsccope_data/02-Operetta_Images_newMatlab_Script-2021_02_10/",
-                                     dir_of_calmorph=params$direcory_of_calmorph_output,#"/home/feketeg/eclipse-workspaces/ws3-forEclipseOxigen/MORPHOLOGY-2018/mater-BRANCH/Morphology-2018-Karcsi/link_to_raid_microsccope_data/03-calmorph_newMatlab_Script/",
+                                     dir_of_images=params$direcory_of_jpg_images_from_microscoope, 
+                                     dir_of_calmorph=params$direcory_of_calmorph_output,
                                      R=30)
       
       cowplot::ggdraw() +
@@ -94,7 +87,7 @@ for( i in seq(genotype_list))
       ggsave(filename = sprintf("%s/%04i-%s.png", out_dir2, ii, r1$Dgroup2), width = 1, height = 1)
       
     }
-    Sys.sleep(3) # 3 secound várakozás, hogy a RAID-et hagyjuk pihenni.
+    Sys.sleep(3) # wait 3 secounds to prevent I/O errors
   }
   
 }
