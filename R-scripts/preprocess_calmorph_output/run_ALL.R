@@ -51,21 +51,18 @@ source("R-scripts/preprocess_calmorph_output/script-12-03-delete_genotypes_not_e
 source("R-scripts/preprocess_calmorph_output/script-13-01-mark_outlier_wells.R")
 source("R-scripts/preprocess_calmorph_output/script-13-02-delete_marked_outlier_welles_on_big_tbl.R")
 
-# a few genotype has more then 4 replicates( wells). The extra replicates will be removed to balance the experimantal.
+# a few genotypes have more than 4 replicates( wells). The extra replicates will be removed to balance out the experiment.
 source("R-scripts/preprocess_calmorph_output/script-14-delete_replicates_over_4.R")
 
- # we store two versions of the cell level data: (1) the smaller_big_tbl.rds contains all cells
- # (2) the calmorph_data-step1-outlier_images_filtered-data_A.rds, calmorph_data-step1-outlier_images_filtered-data_A1B.rds and
- # calmorph_data-step1-outlier_images_filtered-data_C.rds files contains the A, A1B and C phase cells separately.
- # This script update the secound version based on the first.
-source("R-scripts/preprocess_calmorph_output/script-10-smaller_big_tbl_to_data_AA1BC.R")# refresh the tables
+ source("R-scripts/preprocess_calmorph_output/script-10-smaller_big_tbl_to_data_AA1BC.R")# refresh the tables again
 
+ 
  # Creates 'clean' data tables. The smaller_big_tbl data table contains some rows marked for deletions and some unimportant columns.
- # These rows and columns are needed for debugging the workflow but unneeded for the later data analysis.
+ # These rows and columns are needed for debugging the workflow but not needed for the later data analysis.
  # In the clean data tables these rows and columns will be deleted.
  source("R-scripts/preprocess_calmorph_output/script-15-create_supplemantary_table_of_cell_data.R")
 
- # generates images about 100 individual cells per genotype
+ # generates 100 images of individual cells for each genotype
  # these are used for figures
 source("R-scripts/preprocess_calmorph_output/script-102-generate_100_cell_images_per_genotipes_ordered_by_cellsize.R") 
 
