@@ -1,6 +1,6 @@
 # Farkas-et-al-Compensatory-evolution
 
-
+Runing R-scripts/preprocess_calmorph_output/run_ALL.R does all the data preprocessing steps. Its inputs are the output xls tables of the CalMorph, and the microsccope images. The outputs are the data tables, which can be download in zip file.
 
 Data can be downloaded from:
 
